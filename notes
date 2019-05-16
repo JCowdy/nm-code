@@ -1,0 +1,21 @@
+logger.js
+=========
+top/general
+- Pulled chalk require statement to top of file
+- Created TRANSPORT_ACTIONS to store default transport actions based on level
+- Created default root and level constants
+
+constructor
+- defaulted config param to empty obj to prevent read on undefined
+
+log()
+- Removed assignment of params data and level to this context, seems unnecessary.
+  Reserve this context/root for high level logger data. Pass the params to createLogObject.
+
+createLogObject()
+- When checking if data is a string use triple equals
+- Replace string literal 'info' with new DEFAULT_LEVEL
+
+transport()
+- Check if the passed level has an action define in TRANSPORT_ACTIONS and use it.
+  If not use the DEFAULT_LEVEL action
